@@ -1,32 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+namespace Input
 {
-    [SerializeField] private float _rotateSpeed;
-    private const float BottomBorder = 89f;
-    private const float TopBorder = 40f;
-    
-    void Update()
+    public class InputManager : MonoBehaviour
     {
-        if (Input.GetKey(KeyCode.A))
+        [SerializeField] private float _rotateSpeed;
+        private const float BottomBorder = 89f;
+        private const float TopBorder = 40f;
+
+        public static event EventHandler OnCameraMoved;
+
+        void Update()
         {
-            transform.eulerAngles -= Vector3.up * _rotateSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.eulerAngles += Vector3.up * _rotateSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            if (transform.eulerAngles.x > TopBorder)
-                transform.eulerAngles -= Vector3.right * _rotateSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            if (transform.eulerAngles.x < BottomBorder)
-                transform.eulerAngles += Vector3.right * _rotateSpeed * Time.deltaTime;
+            if (UnityEngine.Input.GetKey(KeyCode.A))
+            {
+                transform.eulerAngles -= Vector3.up * _rotateSpeed * Time.deltaTime;
+                OnCameraMoved?.Invoke(this, EventArgs.Empty);
+            }
+            if (UnityEngine.Input.GetKey(KeyCode.D))
+            {
+                transform.eulerAngles += Vector3.up * _rotateSpeed * Time.deltaTime;
+                OnCameraMoved?.Invoke(this, EventArgs.Empty);
+            }
+            if (UnityEngine.Input.GetKey(KeyCode.W))
+            {
+                if (transform.eulerAngles.x > TopBorder)
+                {
+                    transform.eulerAngles -= Vector3.right * _rotateSpeed * Time.deltaTime;
+                    OnCameraMoved?.Invoke(this, EventArgs.Empty);
+                }
+
+            }
+            if (UnityEngine.Input.GetKey(KeyCode.S))
+            {
+                if (transform.eulerAngles.x < BottomBorder)
+                {
+                    transform.eulerAngles += Vector3.right * _rotateSpeed * Time.deltaTime;
+                    OnCameraMoved?.Invoke(this, EventArgs.Empty);
+                }
+            }
         }
     }
 }

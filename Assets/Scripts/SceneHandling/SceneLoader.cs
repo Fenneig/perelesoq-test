@@ -1,16 +1,18 @@
-using SceneHandling;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+namespace SceneHandling
 {
-    [SerializeField] private SceneSO _scenesToLoad;
-    
-    private void Start()
+    public class SceneLoader : MonoBehaviour
     {
-        foreach (var sceneName in _scenesToLoad.SceneList)
+        [SerializeField] private SceneSO _scenesToLoad;
+    
+        private void Awake()
         {
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+            foreach (var sceneName in _scenesToLoad.SceneList)
+            {
+                SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+            }
         }
     }
 }
