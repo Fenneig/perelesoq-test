@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7185220706437533140}
   - component: {fileID: 6625302360680571826}
   - component: {fileID: 8949036090491985190}
+  - component: {fileID: 8039175482558361399}
   m_Layer: 0
   m_Name: CeilLamp
   m_TagString: Untagged
@@ -111,3 +112,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8039175482558361399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684934527256959382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 612f1b9f901542cc8b7f0d7da66665ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deviceBlock: {fileID: 3555906959402618990, guid: ccf58d821c65c3e4bad7f4e6d087504b, type: 3}
