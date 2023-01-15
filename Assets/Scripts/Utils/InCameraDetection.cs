@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Utils
 {
+    [RequireComponent(typeof(DisplayableComponent))]
     public class InCameraDetection : MonoBehaviour
     {
         [SerializeField] private Collider _collider;

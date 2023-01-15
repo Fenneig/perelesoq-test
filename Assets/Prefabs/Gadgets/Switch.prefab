@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 172262133627247603}
   - component: {fileID: 4758056853443465847}
   - component: {fileID: 2630829778050226346}
+  - component: {fileID: 2146564046081034370}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Untagged
@@ -768,6 +769,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deviceBlock: {fileID: 5949553356351571754, guid: 2bd7cbc29f1abfa499f4b61e26b4b0b2, type: 3}
+--- !u!114 &2146564046081034370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3551398354981042783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7c820464644ecd90b5ce1ec9dbf21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _switcherButton: {fileID: 8944119063021907303}
+  _switcherIndicator: {fileID: 3006234701637313551}
+  _switchComponent: {fileID: 2630829778050226346}
+  _switcherMatIndicatorOn: {fileID: 2100000, guid: 8f06f88536682b94abaffa2764b52f9f, type: 2}
+  _switcherMatIndicatorOff: {fileID: 2100000, guid: 0beffbed72a29764c911945ff80620af, type: 2}
 --- !u!1 &5165626563369386784
 GameObject:
   m_ObjectHideFlags: 0
