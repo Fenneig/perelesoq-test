@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 8803231352172094069}
   - component: {fileID: 5868012614942158310}
   - component: {fileID: 4272459962988695973}
+  - component: {fileID: 6583093660002204161}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -3549,6 +3550,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &6583093660002204161
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4071146143778859388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2862427, y: 0.093750425, z: 0.15625052}
+  m_Center: {x: 0.00000010430815, y: 0.0000003501773, z: 0.000000007450561}
 --- !u!1 &4639769671420398680
 GameObject:
   m_ObjectHideFlags: 0

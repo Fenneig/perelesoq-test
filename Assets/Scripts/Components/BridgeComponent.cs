@@ -3,22 +3,12 @@
 namespace Components
 {
     [RequireComponent(typeof(NodeComponent))]
-    public class SwitchComponent : DisplayableComponent
+    public class BridgeComponent : DisplayableComponent
     {
-        [Header("Start state")] [SerializeField]
-        private bool _isActive;
-
-        [Header("Nodes")] 
         [SerializeField] private NodeComponent _incomeNode;
         [SerializeField] private NodeComponent[] _outcomeNodes;
-
         private NodeComponent _node;
-
-        public bool IsActive
-        {
-            get => _isActive;
-            protected set => _isActive = value;
-        }
+        public bool IsActive => _incomeNode.HasElectricity;
 
         private void Start()
         {
@@ -30,12 +20,12 @@ namespace Components
             _node.Capacity = 0;
             _node.HasElectricity = false;
 
-            if (!_incomeNode.HasElectricity || !IsActive) return;
+            if (!IsActive) return;
 
             foreach (var outcomeNode in _outcomeNodes)
             {
                 outcomeNode.GetComponent<DisplayableComponent>()?.UpdateNodeInfo();
-                _node.Capacity += outcomeNode.Capacity;
+                _node.Capacity = outcomeNode.Capacity;
             }
 
             _node.HasElectricity = true;

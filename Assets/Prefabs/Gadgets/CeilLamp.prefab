@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deviceBlock: {fileID: 3555906959402618990, guid: ccf58d821c65c3e4bad7f4e6d087504b, type: 3}
+  _isActive: 0
 --- !u!114 &1250998905121236692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,4 +142,4 @@ MonoBehaviour:
   _lightRenderer: {fileID: 7185220706437533140}
   _lightMaterialOn: {fileID: 2100000, guid: 559c96d2754c1774d952cc0f2979bbd0, type: 2}
   _lightMaterialOff: {fileID: 2100000, guid: d8a62ab40d402914da72efdd0c273534, type: 2}
-  _isLightOn: 0
+  _lampComponent: {fileID: 8039175482558361399}

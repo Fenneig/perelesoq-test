@@ -5,6 +5,7 @@ namespace Components
 {
     public abstract class DisplayableComponent : MonoBehaviour
     {
+        [Header("UI")]
         [SerializeField] private GameObject _deviceBlock;
         public GameObject DeviceBlock => _deviceBlock;
         
@@ -20,5 +21,7 @@ namespace Components
         {
             OnHide?.Invoke(this,EventArgs.Empty);
         }
+
+        public abstract void UpdateNodeInfo();
     }
 }

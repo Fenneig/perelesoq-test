@@ -1,24 +1,29 @@
-﻿using UnityEngine;
+﻿using Components;
+using UnityEngine;
 
 namespace Visual
 {
+    [RequireComponent(typeof(LampComponent))]
     public class CeilLampVisual : MonoBehaviour, IVisuable
     {
         [SerializeField] private Renderer _lightRenderer;
         [SerializeField] private Material _lightMaterialOn;
         [SerializeField] private Material _lightMaterialOff;
-        [SerializeField] private bool _isLightOn;
+        
+        private LampComponent _lampComponent;
 
         private void Start()
         {
+            _lampComponent = GetComponent<LampComponent>();
             UpdateVisual();
         }
 
         [ContextMenu("update")]
         public void UpdateVisual()
         {
-            _isLightOn = !_isLightOn;
-            _lightRenderer.material = _isLightOn ? _lightMaterialOn : _lightMaterialOff;
+            _lightRenderer.material = _lampComponent.IsActive ?
+                                      _lightMaterialOn :
+                                      _lightMaterialOff;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace UI
             foreach (var displayable in _displayableList)
             {
                 var displayableComponent = displayable.GetComponent<DisplayableComponent>();
+                if (displayableComponent.DeviceBlock == null) continue;
                 var deviceBlock = Instantiate(displayableComponent.DeviceBlock, _content);
                 displayableComponent.OnShow += deviceBlock.GetComponent<DeviceComponent>().DisplayableComponent_OnShow;
                 displayableComponent.OnHide += deviceBlock.GetComponent<DeviceComponent>().DisplayableComponent_OnHide;
