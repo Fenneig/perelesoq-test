@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Visual
 {
     [RequireComponent(typeof(BridgeComponent))]
-    public class BridgeVisual : MonoBehaviour, IVisuable
+    public class BridgeVisual : VisualComponent
     {
         [SerializeField] private Renderer _bridgeIndicator;
         [SerializeField] private Material _matIndicatorOn;
@@ -16,7 +16,7 @@ namespace Visual
             _bridge = GetComponent<BridgeComponent>();
         }
 
-        public void UpdateVisual()
+        public override void UpdateVisual()
         {
             _bridgeIndicator.material = _bridge.IsActive ? _matIndicatorOn : _matIndicatorOff;
         }

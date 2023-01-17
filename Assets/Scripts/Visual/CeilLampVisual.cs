@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Visual
 {
     [RequireComponent(typeof(LampComponent))]
-    public class CeilLampVisual : MonoBehaviour, IVisuable
+    public class CeilLampVisual : VisualComponent
     {
         [SerializeField] private Renderer _lightRenderer;
         [SerializeField] private Material _lightMaterialOn;
@@ -18,7 +18,7 @@ namespace Visual
         }
 
         [ContextMenu("update")]
-        public void UpdateVisual()
+        public override void UpdateVisual()
         {
             _lightRenderer.material = _lamp.IsActive ? _lightMaterialOn : _lightMaterialOff;
         }

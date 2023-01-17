@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Visual
 {
     [RequireComponent(typeof(SwitchComponent))]
-    public class SwitcherVisual : MonoBehaviour, IVisuable
+    public class SwitchVisual : VisualComponent
     {
         [SerializeField] private Transform _switcherButton;
         [SerializeField] private Renderer _switcherIndicator;
@@ -17,8 +17,7 @@ namespace Visual
             _switch = GetComponent<SwitchComponent>();
         }
 
-        [ContextMenu("update")]
-        public void UpdateVisual()
+        public override void UpdateVisual()
         {
             _switcherButton.localEulerAngles *= -1;
             _switcherIndicator.material = _switch.IsActive ? 

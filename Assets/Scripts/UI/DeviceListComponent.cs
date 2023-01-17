@@ -8,7 +8,6 @@ namespace UI
     {
         [SerializeField] private Transform _content;
         private Object[] _displayableList;
-        private GameObject _deviceBlock;
 
         private void Start()
         {
@@ -17,9 +16,32 @@ namespace UI
             {
                 var displayableComponent = displayable.GetComponent<DisplayableComponent>();
                 var deviceBlock = Instantiate(displayableComponent.DeviceBlock, _content);
-                displayableComponent.OnShow += deviceBlock.GetComponent<DeviceComponent>().DisplayableComponent_OnShow;
-                displayableComponent.OnHide += deviceBlock.GetComponent<DeviceComponent>().DisplayableComponent_OnHide;
+                var device = deviceBlock.GetComponent<DeviceComponent>();
+                SetupDevice(device, displayableComponent);
+                displayableComponent.OnShow += device.DisplayableComponent_OnShow;
+                displayableComponent.OnHide += device.DisplayableComponent_OnHide;
                 deviceBlock.gameObject.SetActive(false);
+            }
+        }
+
+        private void SetupDevice(DeviceComponent device, DisplayableComponent displayableComponent)
+        {
+            switch (device)
+            {
+                case DeviceDoor:
+                {
+                    var deviceDoor = device.GetComponent<DeviceDoor>();
+                    var doorComponent = displayableComponent.GetComponent<DoorComponent>();
+                    deviceDoor.Setup(displayableComponent.gameObject.name, doorComponent);
+                    break;
+                }
+                case DeviceSwitch:
+                {
+                    var deviceSwitch = device.GetComponent<DeviceSwitch>();
+                    var switchComponent = displayableComponent.GetComponent<SwitchComponent>();
+                    deviceSwitch.Setup(displayableComponent.gameObject.name, switchComponent);
+                    break;
+                }
             }
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Visual
 {
     [RequireComponent(typeof(LampComponent))]
-    public class LampVisual : MonoBehaviour, IVisuable
+    public class LampVisual : VisualComponent
     {
         [SerializeField] private GameObject[] _pointLight;
         private LampComponent _lamp;
@@ -15,7 +15,7 @@ namespace Visual
         }
 
         [ContextMenu("update")]
-        public void UpdateVisual()
+        public override void UpdateVisual()
         {
             foreach (var pointLight in _pointLight)
                 pointLight.SetActive(_lamp.IsActive);

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Visual
 {
     [RequireComponent(typeof(GateComponent))]
-    public class GateVisual : MonoBehaviour, IVisuable
+    public class GateVisual : VisualComponent
     {
         private GateComponent _gate;
 
@@ -13,7 +13,7 @@ namespace Visual
             _gate = GetComponent<GateComponent>();
         }
 
-        public void UpdateVisual()
+        public override void UpdateVisual()
         {
         }
     }

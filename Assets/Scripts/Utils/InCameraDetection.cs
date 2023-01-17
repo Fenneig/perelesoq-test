@@ -13,6 +13,7 @@ namespace Utils
         private DisplayableComponent _displayableComponent;
 
         private bool _isVisible;
+        private bool _isInited;
 
         private void Awake()
         {
@@ -21,11 +22,11 @@ namespace Utils
 
         private void Start()
         {
-            InputManager.OnCameraMoved += InputManager_OnCameraMoved;
+            CameraInput.OnCameraMoved += CameraInput_OnCameraMoved;
             _displayableComponent = GetComponent<DisplayableComponent>();
         }
 
-        private void InputManager_OnCameraMoved(object sender, EventArgs e) => UpdateDetection();
+        private void CameraInput_OnCameraMoved(object sender, EventArgs e) => UpdateDetection();
 
         private void UpdateDetection()
         {
@@ -47,9 +48,16 @@ namespace Utils
             }
         }
 
+        private void LateUpdate()
+        {
+            if (_isInited) return;
+            _isInited = true;
+            UpdateDetection();
+        }
+
         private void OnDestroy()
         {
-            InputManager.OnCameraMoved -= InputManager_OnCameraMoved;
+            CameraInput.OnCameraMoved -= CameraInput_OnCameraMoved;
         }
     }
 }

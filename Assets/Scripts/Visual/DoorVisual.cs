@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Visual
 {
     [RequireComponent(typeof(DoorComponent))]
-    public class DoorVisual : MonoBehaviour, IVisuable
+    public class DoorVisual : VisualComponent
     {
         [SerializeField] private float _timeToOpen = 5f;
         [SerializeField] private Transform _pivot;
@@ -22,7 +22,7 @@ namespace Visual
         }
 
         [ContextMenu("update")]
-        public void UpdateVisual()
+        public override void UpdateVisual()
         {
             if (_isOpen == _door.IsActive) return;
             _isOpen = _door.IsActive;
@@ -41,7 +41,6 @@ namespace Visual
                     ? Mathf.Lerp(_startPosition, _endPosition, progress)
                     : Mathf.Lerp(_endPosition, _startPosition, progress);
                 _pivot.localEulerAngles = Vector3.up * value;
-                Debug.Log(value);
                 yield return null;
             }
         }

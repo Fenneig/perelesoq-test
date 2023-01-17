@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Input
 {
-    public class InputManager : MonoBehaviour
+    public class CameraInput : MonoBehaviour
     {
         [SerializeField] private float _rotateSpeed;
         private const float BottomBorder = 89f;
