@@ -1,20 +1,31 @@
 ﻿using System.Collections;
+using Components;
 using UnityEngine;
 
 namespace Visual
 {
+    [RequireComponent(typeof(DoorComponent))]
     public class DoorVisual : MonoBehaviour, IVisuable
     {
         [SerializeField] private float _timeToOpen = 5f;
         [SerializeField] private Transform _pivot;
+        
         private bool _isOpen;
         private float _startPosition = 0f;
         private float _endPosition = -90f;
 
+        private DoorComponent _door;
+
+        private void Start()
+        {
+            _door = GetComponent<DoorComponent>();
+        }
+
         [ContextMenu("update")]
         public void UpdateVisual()
         {
-            _isOpen = !_isOpen;
+            if (_isOpen == _door.IsActive) return;
+            _isOpen = _door.IsActive;
             StartCoroutine(OpenDoor());
         }
 

@@ -2,6 +2,6 @@
 {
     public class SwitchComponent : DisplayableComponent
     {
-        public bool IsActive { get; private set; }
+        public override bool IsActive { get; protected set; }
     }
 }

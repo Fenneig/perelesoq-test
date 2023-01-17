@@ -8,6 +8,8 @@ namespace Components
         [SerializeField] private GameObject _deviceBlock;
         public GameObject DeviceBlock => _deviceBlock;
         
+        public abstract bool IsActive { get; protected set; }
+
         public event EventHandler OnShow;
         public event EventHandler OnHide;
 

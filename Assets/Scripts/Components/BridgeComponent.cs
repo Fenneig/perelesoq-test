@@ -1,6 +1,6 @@
 ﻿namespace Components
 {
-    public class LampComponent : DisplayableComponent
+    public class BridgeComponent : DisplayableComponent
     {
         public override bool IsActive { get; protected set; }
     }
