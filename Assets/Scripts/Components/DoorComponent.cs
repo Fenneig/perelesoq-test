@@ -4,8 +4,9 @@ namespace Components
 {
     public class DoorComponent : DisplayableComponent
     {
-        public UnityAction OnInteract;
         public override bool HasElectricity => _cameFromNode.HasElectricity;
+        
+        public UnityAction OnInteract;
 
         #region MonoBehaviour
 

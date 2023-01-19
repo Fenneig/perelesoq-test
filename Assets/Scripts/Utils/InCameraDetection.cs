@@ -26,6 +26,7 @@ namespace Utils
         private void Start()
         {
             CameraInput.OnCameraMoved += CameraInput_OnCameraMoved;
+            CameraComponent.OnCameraMoved += CameraComponent_OnCameraMoved;
             _displayableComponent = GetComponent<DisplayableComponent>();
         }
 
@@ -39,18 +40,24 @@ namespace Utils
         private void OnDestroy()
         {
             CameraInput.OnCameraMoved -= CameraInput_OnCameraMoved;
+            CameraComponent.OnCameraMoved -= CameraComponent_OnCameraMoved;
         }
 
         #endregion
 
         private void CameraInput_OnCameraMoved(object sender, EventArgs e) => UpdateDetection();
+        private void CameraComponent_OnCameraMoved(object sender, EventArgs e) => UpdateDetection();
 
         private void UpdateDetection()
         {
-            Vector3 direction = _camera.transform.position - transform.position;
+            Vector3 direction = (_camera.transform.position - transform.position).normalized;
             float distance = Vector3.Distance(transform.position, _camera.transform.position);
 
-            if (Physics.Raycast(transform.position, direction, distance, _wallLayer)) return;
+            if (Physics.Raycast(transform.position, direction, distance, _wallLayer))
+            {
+                if (_displayableComponent != null) _displayableComponent.Hide();
+                return;
+            }
 
             var bounds = _collider.bounds;
             var cameraFrustum = GeometryUtility.CalculateFrustumPlanes(_camera);

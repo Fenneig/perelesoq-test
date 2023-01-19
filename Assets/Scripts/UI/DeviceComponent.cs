@@ -11,14 +11,8 @@ namespace UI
         public void DisplayableComponent_OnShow(object sender, EventArgs e) => ShowBlock();
         public void DisplayableComponent_OnHide(object sender, EventArgs e) => HideBlock();
 
-        private void ShowBlock()
-        {
-            gameObject.SetActive(true);
-        }
+        public void ShowBlock() => gameObject.SetActive(true);
 
-        private void HideBlock()
-        {
-            gameObject.SetActive(false);
-        }
+        public void HideBlock() => gameObject.SetActive(false);
     }
 }
