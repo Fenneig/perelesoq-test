@@ -819,6 +819,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7235660252047346055}
+  - component: {fileID: 327431439828125690}
+  - component: {fileID: 1108943763827500789}
   m_Layer: 0
   m_Name: Bridge
   m_TagString: Untagged
@@ -844,6 +846,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &327431439828125690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287267153043613739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d23cbe37f474ceb81c867f81742c425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deviceBlock: {fileID: 0}
+  _visualComponent: {fileID: 1108943763827500789}
+  _cameFromNode: {fileID: 0}
+--- !u!114 &1108943763827500789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287267153043613739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcafb4ddcfdc4aeea82cacc2ef440660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bridgeIndicator: {fileID: 8617516045383888855}
+  _matIndicatorOn: {fileID: 2100000, guid: 8f06f88536682b94abaffa2764b52f9f, type: 2}
+  _matIndicatorOff: {fileID: 2100000, guid: 0beffbed72a29764c911945ff80620af, type: 2}
 --- !u!1 &7640148440475113017
 GameObject:
   m_ObjectHideFlags: 0

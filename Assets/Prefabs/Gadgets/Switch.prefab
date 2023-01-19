@@ -768,8 +768,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcbd3399b30470992a098e2c32a257f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameFromNode: {fileID: 0}
+  _visualComponent: {fileID: 2146564046081034370}
   _deviceBlock: {fileID: 5949553356351571754, guid: 2bd7cbc29f1abfa499f4b61e26b4b0b2, type: 3}
-  VisualComponent: {fileID: 2146564046081034370}
+  _activeState: 0
 --- !u!114 &2146564046081034370
 MonoBehaviour:
   m_ObjectHideFlags: 0

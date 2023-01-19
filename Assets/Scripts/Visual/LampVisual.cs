@@ -1,4 +1,5 @@
-﻿using Components;
+﻿using System;
+using Components;
 using UnityEngine;
 
 namespace Visual
@@ -9,16 +10,24 @@ namespace Visual
         [SerializeField] private GameObject[] _pointLight;
         private LampComponent _lamp;
 
+        #region MonoBehaviour
+
         private void Start()
         {
             _lamp = GetComponent<LampComponent>();
+            DisplayableComponent.OnAnyVisualUpdated += DisplayableComponent_OnAnyVisualUpdated;
         }
 
-        [ContextMenu("update")]
+        private void OnDestroy() => DisplayableComponent.OnAnyVisualUpdated -= DisplayableComponent_OnAnyVisualUpdated;
+
+        #endregion
+
+        private void DisplayableComponent_OnAnyVisualUpdated(object sender, EventArgs e) => UpdateVisual();
+
         public override void UpdateVisual()
         {
             foreach (var pointLight in _pointLight)
-                pointLight.SetActive(_lamp.IsActive);
+                pointLight.SetActive(_lamp.HasElectricity);
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public class BridgeComponent : DisplayableComponent
     {
-        public override bool IsActive { get; protected set; }
+        public override bool HasElectricity => _cameFromNode.HasElectricity;
     }
 }

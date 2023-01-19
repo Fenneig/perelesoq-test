@@ -1,4 +1,5 @@
-﻿using Components;
+﻿using System;
+using Components;
 using UnityEngine;
 
 namespace Visual
@@ -11,25 +12,33 @@ namespace Visual
         [SerializeField] private Material _switcherMatIndicatorOn;
         [SerializeField] private Material _switcherMatIndicatorOff;
         private SwitchComponent _switch;
-        
+
+        #region MonoBehaviour
 
         private void Start()
         {
             _switch = GetComponent<SwitchComponent>();
-            if (!_switch.IsActive) UpdateRotation();
+            if (!_switch.HasElectricity) UpdateRotation();
+            DisplayableComponent.OnAnyVisualUpdated += DisplayableComponent_OnAnyVisualUpdated;
         }
+
+        private void OnDestroy() => DisplayableComponent.OnAnyVisualUpdated -= DisplayableComponent_OnAnyVisualUpdated;
+
+        #endregion
 
         public override void UpdateVisual()
         {
-            UpdateRotation();
+            if (_switch.HasElectricity)
+                UpdateRotation();
+
             UpdateIndicatorColor();
         }
 
+        private void DisplayableComponent_OnAnyVisualUpdated(object sender, EventArgs e) => UpdateVisual();
+
         private void UpdateIndicatorColor()
         {
-            _switcherIndicator.material = _switch.IsActive ? 
-                _switcherMatIndicatorOn : 
-                _switcherMatIndicatorOff;
+            _switcherIndicator.material = _switch.HasElectricity ? _switcherMatIndicatorOn : _switcherMatIndicatorOff;
         }
 
         private void UpdateRotation()

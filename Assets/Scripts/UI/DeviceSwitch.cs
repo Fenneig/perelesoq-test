@@ -12,8 +12,10 @@ namespace UI
         {
             _name.text = deviceName;
             _toggle.onValueChanged.AddListener(switchComponent.OnActiveChanged);
-            _toggle.onValueChanged.AddListener(isActive => _status.text = isActive ? "on" : "off" );
-            _toggle.isOn = switchComponent.IsActive;
+            _toggle.onValueChanged.AddListener(isActive => _status.text = isActive ? "on" : "off");
+            _toggle.isOn = switchComponent.HasElectricity;
         }
+
+        private void OnDestroy() => _toggle.onValueChanged.RemoveAllListeners();
     }
 }

@@ -5,29 +5,30 @@ namespace Components
 {
     public class SwitchComponent : DisplayableComponent
     {
-        [SerializeField] private bool _isActive;
+        [SerializeField] private bool _activeState;
+        public bool ActiveState => _activeState;
+        public override bool HasElectricity => _cameFromNode.HasElectricity && _activeState;
+
         public UnityAction<bool> OnActiveChanged;
 
-        public override bool IsActive
-        {
-            get => _isActive; 
-            protected set => _isActive = value;
-        }
+        #region MonoBehaviour
 
-        private void Start()
-        {
-            OnActiveChanged += ActiveChange;
-        }
+        private void Start() => OnActiveChanged += ActiveChange;
+
+        private void OnDestroy() => OnActiveChanged -= ActiveChange;
+
+        #endregion
 
         private void ActiveChange(bool isActive)
         {
-            IsActive = isActive;
-            VisualComponent.UpdateVisual();
+            _activeState = isActive;
+            UpdateVisual();
         }
 
-        private void OnDestroy()
+        protected override void UpdateVisual()
         {
-            OnActiveChanged -= ActiveChange;
+            _visualComponent.UpdateVisual();
+            base.UpdateVisual();
         }
     }
 }

@@ -1,7 +1,14 @@
-﻿namespace Components
+﻿using UnityEngine;
+
+namespace Components
 {
-    public class GateComponent : DisplayableComponent
+    public abstract class GateComponent : DisplayableComponent
     {
-        public override bool IsActive { get; protected set; }
+        [SerializeField] protected DisplayableComponent _cameFromSecondNode;
+        
+        public override bool HasElectricity { get; }
+
+        public bool FirstNodeElectricity => _cameFromNode.HasElectricity;
+        public bool SecondNodeElectricity => _cameFromSecondNode.HasElectricity;
     }
 }

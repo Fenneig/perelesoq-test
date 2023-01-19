@@ -1,4 +1,5 @@
-﻿using Components;
+﻿using System;
+using Components;
 using UnityEngine;
 
 namespace Visual
@@ -11,16 +12,24 @@ namespace Visual
         [SerializeField] private Material _lightMaterialOff;
         private LampComponent _lamp;
 
+        #region MonoBehaviour
+
         private void Start()
         {
             _lamp = GetComponent<LampComponent>();
             UpdateVisual();
+            DisplayableComponent.OnAnyVisualUpdated += DisplayableComponent_OnAnyVisualUpdated;
         }
 
-        [ContextMenu("update")]
+        private void OnDestroy() => DisplayableComponent.OnAnyVisualUpdated -= DisplayableComponent_OnAnyVisualUpdated;
+
+        #endregion
+
+        private void DisplayableComponent_OnAnyVisualUpdated(object sender, EventArgs e) => UpdateVisual();
+
         public override void UpdateVisual()
         {
-            _lightRenderer.material = _lamp.IsActive ? _lightMaterialOn : _lightMaterialOff;
+            _lightRenderer.material = _lamp.HasElectricity ? _lightMaterialOn : _lightMaterialOff;
         }
     }
 }

@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612f1b9f901542cc8b7f0d7da66665ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameFromNode: {fileID: 0}
+  _visualComponent: {fileID: 1250998905121236692}
   _deviceBlock: {fileID: 3555906959402618990, guid: ccf58d821c65c3e4bad7f4e6d087504b, type: 3}
 --- !u!114 &1250998905121236692
 MonoBehaviour:
@@ -141,4 +143,3 @@ MonoBehaviour:
   _lightRenderer: {fileID: 7185220706437533140}
   _lightMaterialOn: {fileID: 2100000, guid: 559c96d2754c1774d952cc0f2979bbd0, type: 2}
   _lightMaterialOff: {fileID: 2100000, guid: d8a62ab40d402914da72efdd0c273534, type: 2}
-  _isLightOn: 0

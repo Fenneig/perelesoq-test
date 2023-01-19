@@ -5,22 +5,19 @@ namespace Components
     public class DoorComponent : DisplayableComponent
     {
         public UnityAction OnInteract;
-        public override bool IsActive { get; protected set; }
+        public override bool HasElectricity => _cameFromNode.HasElectricity;
 
-        private void Start()
-        {
-            OnInteract += Interact;
-        }
+        #region MonoBehaviour
+
+        private void Start() => OnInteract += Interact;
+
+        private void OnDestroy() => OnInteract -= Interact;
+
+        #endregion
 
         private void Interact()
         {
-            IsActive = !IsActive;
-            VisualComponent.UpdateVisual();
-        }
-
-        private void OnDestroy()
-        {
-            OnInteract -= Interact;
+            if (HasElectricity) _visualComponent.UpdateVisual();
         }
     }
 }

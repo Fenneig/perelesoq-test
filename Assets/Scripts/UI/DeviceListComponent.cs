@@ -1,6 +1,7 @@
 using Components;
 using Unity.VisualScripting;
 using UnityEngine;
+using Visual;
 
 namespace UI
 {
@@ -15,6 +16,7 @@ namespace UI
             foreach (var displayable in _displayableList)
             {
                 var displayableComponent = displayable.GetComponent<DisplayableComponent>();
+                if (displayableComponent == null || displayableComponent.DeviceBlock == null) continue;
                 var deviceBlock = Instantiate(displayableComponent.DeviceBlock, _content);
                 var device = deviceBlock.GetComponent<DeviceComponent>();
                 SetupDevice(device, displayableComponent);
@@ -31,8 +33,9 @@ namespace UI
                 case DeviceDoor:
                 {
                     var deviceDoor = device.GetComponent<DeviceDoor>();
+                    var doorVisualComponent = displayableComponent.GetComponent<DoorVisual>();
                     var doorComponent = displayableComponent.GetComponent<DoorComponent>();
-                    deviceDoor.Setup(displayableComponent.gameObject.name, doorComponent);
+                    deviceDoor.Setup(displayableComponent.gameObject.name, doorComponent, doorVisualComponent);
                     break;
                 }
                 case DeviceSwitch:

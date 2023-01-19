@@ -24804,5 +24804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8f3ed2ff314735a1e9507f34d82fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameFromNode: {fileID: 0}
+  _visualComponent: {fileID: 9182861933930560534}
   _deviceBlock: {fileID: 4939499765225260732, guid: f391bf2cd9b2b5a4b87539c73db9f849, type: 3}
-  VisualComponent: {fileID: 9182861933930560534}
