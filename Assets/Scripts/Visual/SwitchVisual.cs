@@ -12,12 +12,14 @@ namespace Visual
         [SerializeField] private Material _switcherMatIndicatorOn;
         [SerializeField] private Material _switcherMatIndicatorOff;
         private SwitchComponent _switch;
+        private bool _activeState;
 
         #region MonoBehaviour
 
         private void Start()
         {
             _switch = GetComponent<SwitchComponent>();
+            _activeState = _switch.ActiveState;
             if (!_switch.HasElectricity) UpdateRotation();
             DisplayableComponent.OnAnyVisualUpdated += DisplayableComponent_OnAnyVisualUpdated;
         }
@@ -28,9 +30,7 @@ namespace Visual
 
         public override void UpdateVisual()
         {
-            if (_switch.HasElectricity)
-                UpdateRotation();
-
+            if (_switch.ActiveState != _activeState) UpdateRotation();
             UpdateIndicatorColor();
         }
 
@@ -43,6 +43,7 @@ namespace Visual
 
         private void UpdateRotation()
         {
+            _activeState = !_activeState;
             _switcherButton.localEulerAngles *= -1;
         }
     }

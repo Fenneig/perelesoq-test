@@ -9,11 +9,14 @@ namespace Utils
     public class InCameraDetection : MonoBehaviour
     {
         [SerializeField] private Collider _collider;
+        [SerializeField] private LayerMask _wallLayer;
         private Camera _camera;
         private DisplayableComponent _displayableComponent;
 
         private bool _isVisible;
-        private bool _isInited;
+        private bool _isInitialized;
+
+        #region MonoBehaviour
 
         private void Awake()
         {
@@ -26,12 +29,32 @@ namespace Utils
             _displayableComponent = GetComponent<DisplayableComponent>();
         }
 
+        private void LateUpdate()
+        {
+            if (_isInitialized) return;
+            _isInitialized = true;
+            UpdateDetection();
+        }
+
+        private void OnDestroy()
+        {
+            CameraInput.OnCameraMoved -= CameraInput_OnCameraMoved;
+        }
+
+        #endregion
+
         private void CameraInput_OnCameraMoved(object sender, EventArgs e) => UpdateDetection();
 
         private void UpdateDetection()
         {
+            Vector3 direction = _camera.transform.position - transform.position;
+            float distance = Vector3.Distance(transform.position, _camera.transform.position);
+
+            if (Physics.Raycast(transform.position, direction, distance, _wallLayer)) return;
+
             var bounds = _collider.bounds;
             var cameraFrustum = GeometryUtility.CalculateFrustumPlanes(_camera);
+            
             if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds))
             {
                 if (_isVisible) return;
@@ -46,18 +69,6 @@ namespace Utils
                     _displayableComponent.Hide();
                 _isVisible = false;
             }
-        }
-
-        private void LateUpdate()
-        {
-            if (_isInited) return;
-            _isInited = true;
-            UpdateDetection();
-        }
-
-        private void OnDestroy()
-        {
-            CameraInput.OnCameraMoved -= CameraInput_OnCameraMoved;
         }
     }
 }

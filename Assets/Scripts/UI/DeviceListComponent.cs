@@ -30,6 +30,13 @@ namespace UI
         {
             switch (device)
             {
+                case DeviceLamp:
+                {
+                    var deviceLamp = device.GetComponent<DeviceLamp>();
+                    var lampVisualComponent = displayableComponent.GetComponent<LampComponent>();
+                    deviceLamp.Setup(displayableComponent.gameObject.name, lampVisualComponent);
+                    break;
+                }
                 case DeviceDoor:
                 {
                     var deviceDoor = device.GetComponent<DeviceDoor>();
