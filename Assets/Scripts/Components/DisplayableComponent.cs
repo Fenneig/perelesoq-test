@@ -9,6 +9,7 @@ namespace Components
         [SerializeField] private GameObject _deviceBlock;
         [SerializeField] protected VisualComponent _visualComponent;
         [SerializeField] protected DisplayableComponent _cameFromNode;
+        
         public GameObject DeviceBlock => _deviceBlock;
 
         public abstract bool HasElectricity { get; }

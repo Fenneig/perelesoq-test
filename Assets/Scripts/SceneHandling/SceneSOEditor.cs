@@ -9,7 +9,6 @@ namespace SceneHandling
     {
         [SerializeField] private List<SceneAsset> SceneAssets;
 
-
         public void OnBeforeSerialize()
         {
             if (SceneList == null) return;

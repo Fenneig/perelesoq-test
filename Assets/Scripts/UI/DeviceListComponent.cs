@@ -8,11 +8,10 @@ namespace UI
     public class DeviceListComponent : MonoBehaviour
     {
         [SerializeField] private Transform _content;
-        private Object[] _displayableList;
 
         private void Start()
         {
-            _displayableList = FindObjectsOfType(typeof(DisplayableComponent));
+            Object[] _displayableList = FindObjectsOfType(typeof(DisplayableComponent));
             foreach (var displayable in _displayableList)
             {
                 var displayableComponent = displayable.GetComponent<DisplayableComponent>();
@@ -23,8 +22,6 @@ namespace UI
                 displayableComponent.OnShow += device.DisplayableComponent_OnShow;
                 displayableComponent.OnHide += device.DisplayableComponent_OnHide;
             }
-
-            _displayableList = FindObjectsOfType(typeof(CameraComponent));
         }
 
         private void SetupDevice(DeviceComponent device, DisplayableComponent displayableComponent)

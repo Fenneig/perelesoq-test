@@ -5,9 +5,10 @@ namespace Input
 {
     public class CameraInput : MonoBehaviour
     {
-        [SerializeField] private float _rotateSpeed;
         private const float BottomBorder = 89f;
         private const float TopBorder = 40f;
+        
+        [SerializeField] private float _rotateSpeed;
 
         public static event EventHandler OnCameraMoved;
 

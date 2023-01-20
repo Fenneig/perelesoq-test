@@ -6,6 +6,7 @@ namespace Components
     public class SwitchComponent : DisplayableComponent
     {
         [SerializeField] private bool _activeState;
+        
         public bool ActiveState => _activeState;
         public override bool HasElectricity => _cameFromNode.HasElectricity && _activeState;
 

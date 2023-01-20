@@ -12,7 +12,6 @@ namespace Visual
         [SerializeField] private Renderer _outcomeIndicator;
         [SerializeField] private Material _matIndicatorOn;
         [SerializeField] private Material _matIndicatorOff;
-
         private GateComponent _gate;
 
         #region MonoBehaviour

@@ -13,7 +13,6 @@ namespace Visual
         
         [SerializeField] private float _timeToOpen = 5f;
         [SerializeField] private Transform _pivot;
-
         private DoorComponent _door;
         private bool _isAnimationInProgress;
 

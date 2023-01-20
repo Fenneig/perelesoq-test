@@ -6,12 +6,9 @@ namespace Components
     public class PowerComponent : MonoBehaviour
     {
         [SerializeField] private float _powerConsume;
-        
-        public static event EventHandler OnAnyPowerActiveChanged;
+        private bool _isActive;
 
         public float PowerConsume => _powerConsume;
-        
-        private bool _isActive;
 
         public bool IsActive
         {
@@ -22,5 +19,7 @@ namespace Components
                 OnAnyPowerActiveChanged?.Invoke(this,EventArgs.Empty);
             }
         }
+        
+        public static event EventHandler OnAnyPowerActiveChanged;
     }
 }

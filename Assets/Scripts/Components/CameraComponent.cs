@@ -6,16 +6,16 @@ namespace Components
 {
     public class CameraComponent : DisplayableComponent
     {
+        private const float TopBorder = 40f;
+     
         [SerializeField] private Transform _lookAtAfterSelect;
+        private Camera _camera;
+        
         public override bool HasElectricity { get; } = false;
 
         public static event EventHandler OnCameraMoved;
 
         public UnityAction OnSelectCamera;
-
-        private Camera _camera;
-        
-        private const float TopBorder = 40f;
 
         #region MonoBehaviour
 
