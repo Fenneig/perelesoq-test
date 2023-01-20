@@ -8,6 +8,7 @@ namespace Utils
     [RequireComponent(typeof(DisplayableComponent))]
     public class InCameraDetection : MonoBehaviour
     {
+        [SerializeField] private Transform _facePoint;
         [SerializeField] private Collider _collider;
         [SerializeField] private LayerMask _wallLayer;
         private Camera _camera;
@@ -21,6 +22,7 @@ namespace Utils
         private void Awake()
         {
             _camera = Camera.main;
+            if (_facePoint == null) _facePoint = transform;
         }
 
         private void Start()
@@ -50,12 +52,13 @@ namespace Utils
 
         private void UpdateDetection()
         {
-            Vector3 direction = (_camera.transform.position - transform.position).normalized;
-            float distance = Vector3.Distance(transform.position, _camera.transform.position);
+            Vector3 direction = (_camera.transform.position - _facePoint.position).normalized;
+            float distance = Vector3.Distance(_facePoint.position, _camera.transform.position);
 
-            if (Physics.Raycast(transform.position, direction, distance, _wallLayer))
+            if (Physics.Raycast(_facePoint.position, direction, distance, _wallLayer))
             {
                 if (_displayableComponent != null) _displayableComponent.Hide();
+                _isVisible = false;
                 return;
             }
 

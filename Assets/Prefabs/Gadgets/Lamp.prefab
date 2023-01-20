@@ -1656,6 +1656,7 @@ GameObject:
   - component: {fileID: 3669815616554973150}
   - component: {fileID: 8004710445731986871}
   - component: {fileID: 4286040159861057869}
+  - component: {fileID: 5351195632999726001}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Untagged
@@ -1713,6 +1714,8 @@ MonoBehaviour:
   _deviceBlock: {fileID: 3555906959402618990, guid: ccf58d821c65c3e4bad7f4e6d087504b, type: 3}
   _visualComponent: {fileID: 4286040159861057869}
   _cameFromNode: {fileID: 0}
+  _powerConsume: 100
+  _connectedSourceComponent: {fileID: 0}
 --- !u!114 &4286040159861057869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,6 +1731,19 @@ MonoBehaviour:
   _pointLight:
   - {fileID: 2774957767367426767}
   - {fileID: 3759430850911257487}
+--- !u!114 &5351195632999726001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488502559412146252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6c56b7b4cb4155a8c5a4a03ae1e112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _powerConsume: 30
 --- !u!1 &9003575194112234733
 GameObject:
   m_ObjectHideFlags: 0

@@ -24742,6 +24742,7 @@ GameObject:
   - component: {fileID: 2152995310145045546}
   - component: {fileID: 9182861933930560534}
   - component: {fileID: 2508481611738858854}
+  - component: {fileID: 5406316819153025666}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -24810,3 +24811,18 @@ MonoBehaviour:
   _deviceBlock: {fileID: 4939499765225260732, guid: f391bf2cd9b2b5a4b87539c73db9f849, type: 3}
   _visualComponent: {fileID: 9182861933930560534}
   _cameFromNode: {fileID: 0}
+  _powerConsume: 50
+  _connectedSourceComponent: {fileID: 0}
+--- !u!114 &5406316819153025666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7702934341910781814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb6c56b7b4cb4155a8c5a4a03ae1e112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _powerConsume: 50

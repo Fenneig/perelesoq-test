@@ -17,7 +17,6 @@ namespace Visual
         private void Start()
         {
             _lamp = GetComponent<LampComponent>();
-            UpdateVisual();
             DisplayableComponent.OnAnyVisualUpdated += DisplayableComponent_OnAnyVisualUpdated;
         }
 
@@ -29,6 +28,7 @@ namespace Visual
 
         public override void UpdateVisual()
         {
+            _lamp.UpdatePowerConsume();
             _lightRenderer.material = _lamp.HasElectricity ? _lightMaterialOn : _lightMaterialOff;
         }
     }

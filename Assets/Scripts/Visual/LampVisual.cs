@@ -26,6 +26,7 @@ namespace Visual
 
         public override void UpdateVisual()
         {
+            _lamp.UpdatePowerConsume();
             foreach (var pointLight in _pointLight)
                 pointLight.SetActive(_lamp.HasElectricity);
         }

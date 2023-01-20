@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Components;
 using UnityEngine;
 
@@ -12,18 +13,22 @@ namespace Visual
         
         [SerializeField] private float _timeToOpen = 5f;
         [SerializeField] private Transform _pivot;
-        
-        public bool IsOpen { get; private set; }
-        
+
         private DoorComponent _door;
         private bool _isAnimationInProgress;
 
-        private void Start() => _door = GetComponent<DoorComponent>();
+        public bool IsOpen { get; private set; }
+
+        private void Start()
+        {
+            _door = GetComponent<DoorComponent>();
+        }
 
         public override void UpdateVisual()
         {
             if (!_door.HasElectricity || _isAnimationInProgress) return;
             _isAnimationInProgress = true;
+            _door.AnimationStart();
             IsOpen = !IsOpen;
             StartCoroutine(OpenDoor());
         }
@@ -44,6 +49,7 @@ namespace Visual
             }
 
             _isAnimationInProgress = false;
+            _door.AnimationEnd();
         }
     }
 }
